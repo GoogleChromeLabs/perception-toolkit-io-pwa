@@ -1,0 +1,143 @@
+<!--
+  @license
+  Copyright (c) 2019 The Polymer Project Authors. All rights reserved.
+  This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+  The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+  The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+  Code distributed by Google as part of the polymer project is also
+  subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139056283-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-139056283-1', {
+        'referrer' : document.referrer.split('?')[0],
+      }
+      gtag('set', {'content-group1': 'io'});
+);
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#333">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Google I/O - Sandbox Scanner</title>
+
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="icon" href="/static/images/icons/512.png">
+    {% if target %}
+    <script type="application/json+ld">
+      {
+        "@context": "http://schema.org",
+        "@type": "ARArtifact",
+        "arTarget": {
+          "@type": "Barcode",
+          "text": "{{ env.origin }}{{ page.url }}"
+        },
+        "arContent": {
+          "@type": "WebPage",
+          "url": "{{ env.origin }}{{ page.url }}",
+          "name": "{{ title }}",
+          "image": "{{ env.origin }}{{ image }}",
+          "description": "{{ description }}"{% if target_url %},
+          "mainEntity": {
+            "url": "{{ target_url }}"
+          }{% endif %}
+        }
+      }
+    </script>
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ env.origin }}{{ image }}">
+    {% endif %}
+
+    <script type="application/ld+json" src="/static/sitemap.jsonld"></script>
+
+    <script>
+      window.WebComponents = window.WebComponents || {};
+      window.WebComponents.root = '/node_modules/@webcomponents/webcomponentsjs/';
+    </script>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:400,700" rel="stylesheet">
+
+    {% set appcss %}{% include "app.css" %}{% endset %}
+    <style>
+      {{ appcss | cssmin | safe }}
+    </style>
+    <style custom>
+    {% if styles %}
+      {% set customcss %}{% include styles %}{% endset %}
+      {{ customcss | cssmin | safe }}
+    {% endif %}
+    </style>
+  </head>
+<body>
+  <app-header class="{{ 'expanded' if expanded }}" style="
+    {% if header_background_color %}--header-background-color: {{ header_background_color }};{% endif %}
+    {% if header_text_color %}--header-text-color: {{ header_text_color }};{% endif %}
+  ">{% if not target %}{{ title }}{% endif %}</app-header>
+
+  <main>
+  {{ content | safe }}
+  </main>
+
+  <script src="/node_modules/idb-keyval/dist/idb-keyval-iife.min.js"></script>
+  <script>
+  function injectScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  // Bootstrap.
+  (async function() {
+    const onboarded = await idbKeyval.get('onboarded');
+    if (!onboarded) {
+      await idbKeyval.set('onboarded', true);
+    }
+
+    window.PerceptionToolkit = window.PerceptionToolkit || {};
+    window.PerceptionToolkit.config = {
+      root: '/node_modules/perception-toolkit',
+      onboarding: !onboarded,
+      onboardingImages: [
+        '/static/images/onboarding/step-1.jpg',
+        '/static/images/onboarding/step-2.jpg',
+        '/static/images/onboarding/step-3.jpg',
+        '/static/images/onboarding/step-4.jpg',
+      ],
+      shouldLoadArtifactsFrom(url) {
+        switch (url.origin) {
+          case 'http://localhost:8080':
+          case 'https://rotavo-kiosk.firebaseapp.com':
+            return true;
+
+          default:
+            return false;
+        }
+      }
+    };
+
+    injectScript('/node_modules/perception-toolkit/lib/bundled/bootstrap.js');
+    injectScript('/bundled/app.js');
+  })();
+  </script>
+
+  <footer>
+    <a id="source-code" href="https://github.com/">Get the source code</a>
+    <button id="share-app">Share this app</button>
+
+    <a href="/settings/" id="version">{{ env.version }}</a>
+  </footer>
+</body>
+</html>

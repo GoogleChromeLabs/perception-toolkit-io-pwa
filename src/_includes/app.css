@@ -1,0 +1,108 @@
+/**
+ * @license
+ * Copyright (c) 2019 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: #FAFAFA;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+h1, h2, h3 {
+  font-family: 'Raleway', 'Roboto', Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  opacity: 0;
+  padding-bottom: 80px;
+}
+
+a {
+  color: rgb(42, 135, 67);
+}
+
+app-header {
+  min-height: 64px;
+  font-size: 0;
+  opacity: 0;
+}
+
+app-header::after {
+  padding: 20px 24px;
+  content: 'Loading...';
+  color: #FFF;
+  font-size: 18px;
+  flex: 1;
+  text-align: left;
+  display: block;
+}
+
+footer {
+  height: 40px;
+  background: #efefef;
+  color: #6d6d6d;
+  font-size: 12px;
+  margin-top: 24px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px 24px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 3;
+}
+
+#source-code {
+  color: #6d6d6d;
+  padding-left: 32px;
+  background: url(/static/images/baseline-code-24px.svg) left center no-repeat;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+#share-app {
+  cursor: pointer;
+  margin-left: 16px;
+  padding: 0 0 0 32px;
+  background: url(/static/images/baseline-share-24px.svg) left center no-repeat;
+  border: none;
+  margin: 0 0 0 24px;
+  font-size: 12px;
+  color: #6d6d6d;
+  text-decoration: underline;
+  height: 24px;
+  display: none;
+}
+
+#share-app.visible {
+  display: block;
+}
+
+#version {
+  flex: 1;
+  text-align: right;
+  color: #CCC;
+}

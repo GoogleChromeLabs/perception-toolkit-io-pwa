@@ -1,0 +1,77 @@
+/**
+ * @license
+ * Copyright (c) 2019 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+body {
+  background: #FFF;
+  font-size: 16px;
+  text-align: center;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #626262;
+  width: 90%;
+  max-width: 420px;
+  margin: 0 auto 1em auto;
+}
+
+img {
+  width: 130px;
+  margin-top: 40px;
+}
+
+@media(min-width: 400px) {
+  img {
+    width: 180px;
+    height: 130px;
+    margin-top: 50px;
+  }
+}
+
+h1 {
+  margin-bottom: 36px;
+}
+
+#start-scanning {
+  background: rgb(42, 135, 67);
+  height: 48px;
+  max-width: 300px;
+  border-radius: 32px;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 24px auto;
+}
+
+@media(min-width: 400px) {
+  #start-scanning {
+    margin-top: 60px;
+  }
+}
+
+@media(min-width: 600px) {
+  #start-scanning {
+    margin-top: 80px;
+  }
+}
+
+#see-list {
+  font-size: 14px;
+  color: rgb(90, 90, 90);
+}
+
+p:last-of-type {
+  margin-bottom: 32px;
+}

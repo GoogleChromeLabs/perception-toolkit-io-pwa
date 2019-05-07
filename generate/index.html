@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>QR Code</title>
+    <script src="../node_modules/qrcodejs/qrcode.min.js"></script>
+  </head>
+<body>
+  <form id="generate">
+    <input type="url" id="url" value="" style="font-size: 20px; width: 400px">
+    <button type="submit">Generate</button>
+  </form>
+
+  <div id="qrcode" style="margin: 30px;"></div>
+
+  <script type="text/javascript">
+    const target = document.getElementById("qrcode");
+    const form = document.getElementById('generate');
+    const url = document.getElementById('url');
+
+    url.value = `${window.location.origin.toString()}/details/`;
+
+    const generate = (evt, clear = true, value) => {
+      if (evt) {
+        evt.preventDefault();
+      }
+
+      if (clear) {
+        target.innerHTML = '';
+      }
+
+      new QRCode(target, value);
+    }
+
+    form.addEventListener('submit', (e) => generate(e, true, url.value));
+  </script>
+</body>
+</html>

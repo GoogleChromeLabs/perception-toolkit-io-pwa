@@ -1,0 +1,42 @@
+{
+  "name": "io-sandbox-webapp",
+  "version": "1.6.3",
+  "description": "Google I/O Sandbox PWA",
+  "main": "index.js",
+  "scripts": {
+    "install": "napa",
+    "build": "rollup -c && ELEVENTY_ENV=development eleventy --input=src --output=dist && npm run build-cache-manifest && npm run sw && npm run gzip && npm run sitemap",
+    "build-cache-manifest": "node build/generate.js",
+    "prod": "npm version patch && rollup -c && ELEVENTY_ENV=production eleventy --input=src --output=dist && npm run build-cache-manifest && npm run sw && npm run sitemap",
+    "sw": "rollup -c rollup.sw.config.js",
+    "gzip": "find dist -type f -name '*.js' -exec gzip -kf \"{}\" \\;",
+    "serve": "http-server dist -g -c0 --cors=\"*\"",
+    "sitemap": "node build/sitemap.js"
+  },
+  "napa": {
+    "qrcodejs": "davidshimjs/qrcodejs"
+  },
+  "author": "The Polymer Authors",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.7.1",
+    "clean-css": "^4.2.1",
+    "express": "^4.16.4",
+    "idb-keyval": "^3.2.0",
+    "lit-html": "^1.0.0",
+    "napa": "^3.0.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.6.0",
+    "rollup-plugin-loadz0r": "^0.7.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-replace": "^2.1.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "sitemap-generator": "git+ssh://git@github.com/PolymerLabs/perception-toolkit.git#sitemap-generator",
+    "walk": "^2.3.14"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "perception-toolkit": "git+ssh://git@github.com/PolymerLabs/perception-toolkit.git"
+  }
+}

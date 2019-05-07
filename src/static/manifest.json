@@ -1,0 +1,16 @@
+{
+  "short_name": "Sandbox",
+  "name": "Google I/O Sandbox Scanner",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF",
+  "theme_color": "#333",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/static/images/icons/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

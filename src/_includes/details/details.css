@@ -1,0 +1,163 @@
+/**
+ * @license
+ * Copyright (c) 2019 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 80px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  animation: scaleIn forwards 0.5s cubic-bezier(0, 0.6, 0.3, 1);
+}
+
+#header-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 280px;
+  margin-top: -200px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#header-block h2 {
+  font-size: 13px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-top: 8px;
+}
+
+#header-block p {
+  margin: 0;
+}
+
+#details {
+  position: relative;
+  margin: -100px auto 0 auto;
+  padding: 116px 24px;
+  background: #FFF;
+  border-radius: 20px 20px 3px 3px;
+  opacity: 0;
+  animation: slideAndFadeIn forwards 1.2s cubic-bezier(0, 0.6, 0.3, 1) 0.3s;
+  max-width: 700px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+#details ul {
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  max-width: 600px;
+  margin: 16px auto 32px auto;
+}
+
+#details li {
+  line-height: 36px;
+}
+
+#details li a {
+  color: #4385F4;
+  display: block;
+  padding-left: 32px;
+}
+
+#details a.person {
+  background: url(/static/images/baseline-person-24px.svg) left center no-repeat;
+}
+
+#details a.link {
+  background: url(/static/images/baseline-link-24px.svg) left center no-repeat;
+}
+
+#details a.slides {
+  background: url(/static/images/baseline-slideshow-24px.svg) left center no-repeat;
+}
+
+#details a:hover {
+  color: rgb(51, 103, 193);
+}
+
+@media (min-width: 700px) {
+  #details {
+    margin-bottom: 32px;
+  }
+}
+
+#controls {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  height: 40px;
+  padding: 10px 16px;
+  background: #F7F7F7;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#share, #delete {
+  width: 24px;
+  height: 24px;
+  background: url(/static/images/baseline-share-24px.svg) center center no-repeat;
+  border: none;
+  cursor: pointer;
+  font-size: 0;
+}
+
+#share {
+  margin-right: 8px;
+  display: none;
+}
+
+#share.visible {
+  display: block;
+}
+
+#delete {
+  background: url(/static/images/baseline-delete_forever-24px.svg) center center no-repeat;
+}
+
+#description {
+  line-height: 1.5;
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.7);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideAndFadeIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
