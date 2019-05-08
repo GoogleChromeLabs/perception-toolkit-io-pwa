@@ -1,8 +1,8 @@
 {
-  "name": "io-sandbox-webapp",
-  "version": "1.6.3",
-  "description": "Google I/O Sandbox PWA",
-  "main": "index.js",
+  "name": "perception-toolkit-io-pwa",
+  "version": "0.0.1",
+  "description": "Perception Toolkit IO PWA",
+  "main": "dist/index.html",
   "scripts": {
     "install": "napa",
     "build": "rollup -c && ELEVENTY_ENV=development eleventy --input=src --output=dist && npm run build-cache-manifest && npm run sw && npm run gzip && npm run sitemap",
@@ -16,8 +16,7 @@
   "napa": {
     "qrcodejs": "davidshimjs/qrcodejs"
   },
-  "author": "The Polymer Authors",
-  "license": "BSD-3-Clause",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@11ty/eleventy": "^0.7.1",
     "clean-css": "^4.2.1",
@@ -37,6 +36,6 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
-    "perception-toolkit": "git+ssh://git@github.com/PolymerLabs/perception-toolkit.git"
+    "perception-toolkit": "^0.0.1"
   }
 }
