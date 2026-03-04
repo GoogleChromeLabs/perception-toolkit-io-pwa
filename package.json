@@ -18,7 +18,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
+    "@11ty/eleventy": "^3.1.2",
     "clean-css": "^4.2.1",
     "express": "^4.16.4",
     "idb-keyval": "^3.2.0",
